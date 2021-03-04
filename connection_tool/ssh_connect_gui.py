@@ -1,6 +1,7 @@
 from ssh_connect import *
-
-
+from ssh_connect import _save_settings_json, _read_settings_json
+from pathlib import Path
+import inspect
 import PySimpleGUI as sg
 import webbrowser
 
@@ -18,7 +19,20 @@ layout = [
 ]
 
 
-s = Settings()
+# Read settings
+this_scripts_relpathstr = inspect.getfile(inspect.currentframe())
+executable_path = Path("./") / this_scripts_relpathstr
+settings_path = executable_path.parent / "connection_settings.json"
+
+if not settings_path.exists():
+    print(f"Default settings file not found: {str(settings_path)}")
+    print("Creating a default settings file from template.")
+    print("Please modify with your username and private key file path")
+    s = Settings()
+    _save_settings_json(s, str(settings_path))
+    exit()
+else:
+    s = _read_settings_json(str(settings_path))
 
 # Create the window
 window = sg.Window("Connection tool", layout)
