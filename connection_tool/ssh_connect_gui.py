@@ -9,16 +9,20 @@ START = "Start Jupyter Desktop"
 KILL = "Kill Jupyter Desktop"
 DISCONNECT = "Disconnect"
 
-layout = [[sg.Text("SpaceM Desktop Server Connection Tool")], 
-          [sg.Button(CONNECT)],
-          [sg.Button(START)],
-          [sg.Button(KILL)],
-          [sg.Button(DISCONNECT)],
-          ]
+layout = [
+    [sg.Text("SpaceM Desktop Server Connection Tool")],
+    [sg.Button(CONNECT)],
+    [sg.Button(START)],
+    [sg.Button(KILL)],
+    [sg.Button(DISCONNECT)],
+]
+
+
+s = Settings()
 
 # Create the window
 window = sg.Window("Connection tool", layout)
-c, k = get_ssh_client_and_key()
+c, k = get_ssh_client_and_key(s)
 
 # Create an event loop
 while True:
@@ -29,15 +33,15 @@ while True:
         break
     if event == CONNECT:
         print("Connecting to server")
-        connect(c,k)
+        connect(c, k, s)
     if event == START:
         print("Sarting Jupyter")
-        URL = start_server(c)
+        URL = start_server(c, s)
         webbrowser.open(URL, new=1)
         print(URL)
     if event == KILL:
         print("Killing Server")
-        kill_server(c)
+        kill_server(c, s)
     if event == DISCONNECT:
         print("Disconnecting")
         disconnect(c)
