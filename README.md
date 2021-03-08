@@ -55,6 +55,9 @@ script) that holds the settings. Do not change the location of your key file.
 
 ## Connection
 
+**Note that you can only connect to Sergio's machine while you are on the EMBL network.
+If working off-campus you need to activate your VPN**
+
 Once the config file has been created, on subsequent starts of the tool you will be
 greeted by this minimalistic interface:
 
@@ -135,6 +138,3 @@ Run (using `sudo`) the script in `admin_scripts`.
 ## Docker run script
 
 See `server_scripts`. On the server, this is stored in `/etc/spacem_jupyter_desktop`. 
-
-
-
