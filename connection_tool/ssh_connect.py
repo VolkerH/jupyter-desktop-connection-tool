@@ -11,7 +11,7 @@ class Settings:
     hostip: str = "10.11.19.188"
     user: str = "spacem"
     privatekeyfile: str = "/home/hilsenst/.ssh/id_rsa"
-    docker_start_cmd: str = "$HOME/rundocker.sh"
+    docker_start_cmd: str = "/etc/spacem_jupyter_desktop/rundocker.sh"
     docker_stderr_cmd: str = "/usr/bin/cat $HOME/.jupyter_docker_stderr"
     docker_port_cmd: str = "/usr/bin/cat $HOME/.jupyter_docker_port"
     docker_kill_cmd: str = "/usr/bin/killall docker"
