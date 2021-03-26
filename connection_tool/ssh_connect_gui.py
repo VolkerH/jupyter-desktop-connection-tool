@@ -16,7 +16,7 @@ HOST = "Hostname or IP"
 KEY = "Private Keyfile"
 USER = "Username"
 CREATE = "Create Settingsfile"
-DEFAULTIP = "10.11.19.188"
+DEFAULTIP = "127.0.0.1"
 
 
 # Read settings

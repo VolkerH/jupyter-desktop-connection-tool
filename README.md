@@ -2,16 +2,9 @@
 
 # About
 
-This repo contains the SpaceM Jupyter Desktop Connection tool.
-This tool facilitates the connection to the virtual desktop solution running
-on the SpaceM workstation (this is currently also Sergio's workstation,
-so be mindful of resources)/
-
-# Shared Resource - Sergio's Workstation
-
-Note that Sergio's Workstation is a shared resource. **Be mindful of others, who may
-also be using the machine, in particular of Sergio. If necessary, coordinate use via
-Slack. Don't fill up the persistent folders with tons of data**.
+This repo contains a GUI tool for connecting to a [Jupyter Desktop Server](https://github.com/yuvipanda/jupyter-desktop-server)
+running on a workstation and associated shell scripts that need to be installed 
+on the workstation. 
 
 # Documentation for Users
 
@@ -41,9 +34,10 @@ using `python ssh_connect_gui.py`.
 ## First start
 
 When you first launch the tool, you will be prompted to create a configuration.
-For this you will need your username and a key file (contact Volker via Slack for these).
-The IP address of the server is pre-filled with the current default, but can be changed
-if it becomes necessary.
+For this you will need your username and a key file.  
+Your admin needs to create a user and a key pair on the workstation. There is a script in `admin_scripts` that automates this (tested on Ubuntu 20.04) process.
+
+The IP address of the server is pre-filled with the current default, but can be changed.
 
 The dialog should be fairly self explanatory:
 
@@ -55,8 +49,6 @@ script) that holds the settings. Do not change the location of your key file.
 
 ## Connection
 
-**Note that you can only connect to Sergio's machine while you are on the EMBL network.
-If working off-campus you need to activate your VPN**
 
 Once the config file has been created, on subsequent starts of the tool you will be
 greeted by this minimalistic interface:
@@ -68,10 +60,9 @@ greeted by this minimalistic interface:
 [This screen recording shows the tool and the desktop in action](https://slack-files.com/T07TPNGTC-F01PSQNPNBH-e310f22543).
 
 
-* Note that there is no status indicator for the connection (maybe this will be added later).
+* Note that there is no status indicator for the connection (PRs welcome).
 * Closing the connection to the server does not kill the desktop. You will continue to use resources. On the other hand this can be useful as you don't need to stay connected for long computations. 
-* Killing the jupyter desktop server will kill the Desktop without warning. Make sure you copy all results
-to a secure location. 
+* Killing the jupyter desktop server will kill the Desktop without warning. Make sure you copy all results to a secure location.  
 
 
 ## In the "container" workspace
@@ -85,8 +76,7 @@ on [somebody else's existing work](https://github.com/yuvipanda/jupyter-desktop-
 While you can create files in the local folders in the Desktop environments and work
 with those, all these files will be gone when you log out and you will start with a clean slate
 on your next login. **BE SURE TO COPY IMPORTANT RESULTS AT THE END OF THE SESSION!**, either
-to the group share (backed up, safe) or the persistent folders on the workstation (not backed up,
-unsafe).
+to the group share (backed up, safe) or the persistent folders on the workstation (not backed up, unsafe).
 
 ### Pre-installed software
 
@@ -119,15 +109,13 @@ You can install software in your persistent folder location, e.g. Fiji by copyin
 
 If you want to create your own conda environment you can create it there with the `--prefix` option and it will be persistent, e.g. `conda create --prefix ~/share_yourusername_here/mycondeenvironment python=3.7` and activate it with `conda activate ~/share_yourusername_here/mycondeenvironment`.
 
+
 ### GPU
 
-The Docker environment supports CUDA. Currently there is not much GPU RAM. If one user runs something with pytorch or tensorflow, there will be no GPU RAM for other users, so coordinate among you.
-
-
+If you run nvidia docker you can run CUDA code in the Docker image.
 ## Changing settings
 
 If you need to change your settings (e.g. because you moved your key file to a new location), delete the `connection_settings.json` file.
-
 
 # Documentation for Admins
 
@@ -137,4 +125,4 @@ Run (using `sudo`) the script in `admin_scripts`.
 
 ## Docker run script
 
-See `server_scripts`. On the server, this is stored in `/etc/spacem_jupyter_desktop`. 
+See `server_scripts`. On the server, this is stored in `/etc/jupyter_desktop`. 
