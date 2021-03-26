@@ -77,22 +77,13 @@ While you can create files in the local folders in the Desktop environments and 
 with those, all these files will be gone when you log out and you will start with a clean slate
 on your next login. **BE SURE TO COPY IMPORTANT RESULTS AT THE END OF THE SESSION!**, either
 to the group share (backed up, safe) or the persistent folders on the workstation (not backed up, unsafe).
+re, see below.
 
-### Pre-installed software
+### Mapping external files 
 
-* **SpaceM** is already pre-installed. You can open a terminal, run `conda activate spacem` and then start `SpaceM`.
-* **napari** the napari viewer is pre-installed. Open a terminal and type `napari`.
-* **Nikon mosaic viewer tool** will be added in the coming days.
-
-Let me know if you think there are other tools that are relevant to all users and should be pre-installed. For installing your own scripts and software, see below.
-
-### Mapping the group share
-
-In the file manager, go to the address bar and type 
-```sftp://youremblusername@datatransfer.embl.de:/g/scb/alexandr`, with your actual EMBL ident.
-You will be prompted for the password and then you can browse the files. Note that drag and drop
-will not work for files mounted in that way. You will have to copy the files to a local folder.
-(This will typically be very fast).
+You can mount folders on external servers using sshfs in the file manager, go to the address bar and type 
+```sftp://username@hostname:/folder```
+You will be prompted for the password and then you can browse the files. Note that drag and drop will not work for files mounted in that way. 
 
 ![./resources/map_groupshare.png]
 
